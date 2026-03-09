@@ -3,7 +3,7 @@ import Navbar from '../components/Navbar'
 import NotesNotFound from '../components/NotesNotFound';
 import RateLimitedUI from '../components/RateLimitedUI';
 import NoteCard from '../components/NoteCard';
-import axios from 'axios';
+import api from '../lib/axios';
 import toast from "react-hot-toast";
 
 const HomePage = () => {
@@ -14,7 +14,7 @@ const HomePage = () => {
     useEffect(()=>{
         const fetchNotes= async ()=>{
             try {
-                const res= await axios.get("http://localhost:5001/api/notes")
+                const res= await api.get("/notes")
                 console.log(res.data)
                 setNotes(res.data)
                 setIsRateLimited(false)
